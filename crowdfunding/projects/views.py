@@ -29,7 +29,7 @@ class ProjectList(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-
+      
 class PledgeList(APIView):
     
     def get(self,request):
@@ -77,3 +77,8 @@ class ProjectDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
+
+    def delete(self, request, pk, format=None):
+        event = self.get_object(pk)
+        event.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
