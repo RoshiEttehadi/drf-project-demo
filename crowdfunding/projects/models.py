@@ -25,3 +25,5 @@ class Pledge(models.Model):
         related_name='pledges'
     )
     supporter = models.CharField(max_length=200)
+  
+    

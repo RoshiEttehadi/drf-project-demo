@@ -13,10 +13,17 @@ Project Code
 Pledge Code
 
 {
-    "id": 1,
-    "amount": "Five thousand",
+    "amount": 5000,
     "comment": "College Fund.",
-    "anonymous": yes,
+    "anonymous": true,
     "project": "College UWA",
-    "supporter": Daniel
+    "supporter": "Daniel"
+}
+
+User Code
+
+{
+    "id": 1,
+    "username": "Roshi",
+    "email": "roshi.ett@gmail.com"
 }
