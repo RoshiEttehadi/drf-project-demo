@@ -49,6 +49,7 @@ class ProjectDetail(APIView):
 
     def put(self, request, pk):
         project = self.get_object(pk)
+        self.check_object_permissions(request, project)
         data = request.data
         serializer = ProjectDetailSerializer(
             instance=project,
@@ -57,8 +58,17 @@ class ProjectDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
     def delete(self, request, pk, format=None):
+        self.check_object_permissions(request, project)
         event = self.get_object(pk)
         event.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -103,6 +113,7 @@ class PledgeDetail(APIView):
 
     def put(self, request, pk):
         pledge = self.get_object(pk)
+        self.check_object_permissions(request, pledge)
         data = request.data
         serializer = PledgeDetailSerializer(
             instance=pledge,
@@ -111,9 +122,18 @@ class PledgeDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
     def delete(self, request, pk, format=None):
         event = self.get_object(pk)
+        self.check_object_permissions(request, pledge)
         event.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

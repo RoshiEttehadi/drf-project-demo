@@ -13,11 +13,11 @@ Project Code
 Pledge Code
 
 {
-    "amount": 5000,
+    "amount": 3000,
     "comment": "College Fund.",
     "anonymous": true,
-    "project": "College UWA",
-    "supporter": "Daniel"
+    "supporter": "Daniel",
+	"project": 4
 }
 
 User Code
