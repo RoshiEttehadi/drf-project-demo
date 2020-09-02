@@ -68,9 +68,9 @@ class ProjectDetail(APIView):
         )
 
     def delete(self, request, pk, format=None):
+        project = self.get_object(pk)
         self.check_object_permissions(request, project)
-        event = self.get_object(pk)
-        event.delete()
+        project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
       
@@ -96,8 +96,7 @@ class PledgeList(APIView):
 
 class PledgeDetail(APIView):
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly
+        permissions.IsAuthenticatedOrReadOnly
     ]
     
     def get_object(self, pk):
@@ -132,8 +131,8 @@ class PledgeDetail(APIView):
         )
 
     def delete(self, request, pk, format=None):
-        event = self.get_object(pk)
+        pledge = self.get_object(pk)
         self.check_object_permissions(request, pledge)
-        event.delete()
+        pledge.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

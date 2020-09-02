@@ -23,7 +23,7 @@ class Pledge(models.Model):
     project = models.ForeignKey(
         'Project',
         on_delete=models. CASCADE,
-        related_name='owner_pledges'
+        related_name='pledges'
     )
     
   
