@@ -43,14 +43,14 @@ class ProjectSerializer(serializers.Serializer):
     is_open = serializers.BooleanField()
     date_created = serializers.DateTimeField()
     owner = serializers.ReadOnlyField(source='owner.username')
-      
 
     def create(self, validated_data):
         return Project.objects.create(**validated_data)
 
 class ProjectDetailSerializer(ProjectSerializer):
-    projects = ProjectSerializer(many=True, read_only=True)
-
+    # projects = ProjectSerializer(many=True, read_only=True)
+    pledges = PledgeSerializer(many=True, read_only=True)
+    
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
         instance.description = validated_data.get('description', instance.description)
