@@ -16,8 +16,7 @@ Pledge Code
     "amount": 3000,
     "comment": "College Fund.",
     "anonymous": true,
-    "supporter": "Daniel",
-	"project": 4
+    "project": 1
 }
 
 User Code

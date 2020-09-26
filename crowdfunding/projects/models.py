@@ -19,16 +19,15 @@ class Pledge(models.Model):
     amount = models.IntegerField()
     comment = models.CharField(max_length=200)
     anonymous = models.BooleanField()
-    supporter = models.CharField(max_length=200)
     project = models.ForeignKey(
         'Project',
         on_delete=models. CASCADE,
         related_name='pledges'
     )
-    supporter = models.ForeignKey(
+    owner = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
-        related_name='supporter_pledges'
+        related_name='owner_pledges'
     )
     
   
